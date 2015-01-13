@@ -26,6 +26,13 @@ switch($file_ext){
 			$tpl = $file_ext . '/grab.tpl';
 		}
 		break;
+	case "sh":
+		$dot_pos = strrpos($filename,'.');
+		$_pos = strrpos($filename,'_');
+		$service_name = substr($filename,$_pos + 1,$dot_pos - $_pos - 1);
+		$smarty->assign("service_name",$service_name);
+		$tpl = $file_ext . "/kill.tpl";
+		break;	
 }
 
 $smarty->display($tpl);
